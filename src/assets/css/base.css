@@ -1,0 +1,29 @@
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+  ul{
+      list-style: none;
+  }
+
+  @font-face {
+    font-family: 'iconfont';
+    src: url('../font/font_wxjhifl0xjp/iconfont.ttf') format('truetype');
+  }
+
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
