@@ -45,6 +45,12 @@ const routes = [
         name:'roles',
         meta:{title:'角色列表'},
         component: ()=>import('../views/home/child/limits/roles.vue'),
+      },
+      {
+        path:'categories',
+        name:'categories',
+        meta:{title:'商品分类'},
+        component: ()=>import('../views/home/child/goods/categories.vue'),
       }
     ]
   }
