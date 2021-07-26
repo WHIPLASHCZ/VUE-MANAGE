@@ -19,7 +19,23 @@ const routes = [
     path:'/home',
     name:'home',
     component: ()=>import('../views/home/home.vue'),
-    meta:{title:'首页'}
+    redirect:'/home/welcome',
+    meta:{title:'首页'},
+    children:[
+
+      {
+        path:'welcome',
+        name:'welcome',
+        meta:{title:'欢迎'},
+        component: ()=>import('../views/home/child/users/welcome.vue'),
+      },
+      {
+        path:'users',
+        name:'users',
+        meta:{title:'用户列表'},
+        component: ()=>import('../views/home/child/users/users.vue'),
+      }
+    ]
   }
 ]
 
@@ -28,10 +44,9 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-
 //通过token来检测当前浏览器中用户是否登陆。
 router.beforeEach((to,from,next)=>{
-  console.log(to);
+
   //如果访问的是登录页 可以没有token
     if(to.path==='/login') return next();
     const token = sessionStorage.getItem('token');
@@ -39,6 +54,11 @@ router.beforeEach((to,from,next)=>{
    if(!token) return next('/login');
    //登陆了则正常跳转
    document.title = to.meta.title;
+   if(to.matched[1]){
+     sessionStorage.setItem("activeIndex", to.matched[1].name);
+    //  console.log(Vue.prototype.$bus);
+     Vue.prototype.$bus.$emit('jump');
+    }
    next();
 })
 

@@ -20,7 +20,7 @@
             v-model="form.password"
             :type="form.passInput"
           >
-            <i slot="prefix" class="iconfont mima ">&#xe62f;</i>
+            <i slot="prefix" class="iconfont mima ">&#xe66c;</i>
             <i
               slot="suffix"
               class="el-icon-view mima "
@@ -74,7 +74,8 @@ export default {
         if (!valid) return;
         let { data: res } = await login(this.form.username, this.form.password);
         // console.log("await得到结果才会执行");
-        if (res.meta.status !== 200) return this.$message.error("登陆失败！");
+        console.log(res);
+        if (res.meta.status !== 200) return this.$message.error(res.meta.msg);
         this.$message.success("登陆成功！");
         //保存用户的token 有token才能访问其他页面
         sessionStorage.setItem("token", res.data.token);

@@ -14,16 +14,26 @@ body,
   ul{
       list-style: none;
   }
-
   @font-face {
     font-family: 'iconfont';
-    src: url('../font/font_wxjhifl0xjp/iconfont.ttf') format('truetype');
+    src: url('../fonts/iconfont.eot');
+    src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+    /* url('iconfont.woff') format('woff'), */
+    url('../fonts/iconfont.woff') format('woff'),
+    url('../fonts/iconfont.ttf') format('truetype'),
+    url('../fonts/iconfont.svg#iconfont') format('svg');
   }
 
-  .iconfont {
-    font-family: "iconfont" !important;
-    font-size: 16px;
-    font-style: normal;
+  .iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
     -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
+  }
+  .el-breadcrumb{
+    margin-bottom: 15px;
+  }
+  .el-card{
+    box-shadow: 0 1px 5px rgba(100,100,100,0.1)!important;
   }
