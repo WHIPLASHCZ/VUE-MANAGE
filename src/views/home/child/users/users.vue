@@ -80,6 +80,41 @@
       </span>
     </el-dialog>
 
+    <!-- 分配角色对话框 -->
+    <!-- 修改用户信息确认框 -->
+    <el-dialog
+      title="分配角色"
+      :visible.sync="setRoleVisible"
+      width="30%"
+      class="edit"
+      @close="resetSelectedId"
+    >
+      <div class="roleBox">
+        <p>当前用户：{{ userInfo.username }}</p>
+        <p>当前角色：{{ userInfo.role_name }}</p>
+        <p>
+          分配新角色：
+          <el-select
+            v-model="selectedRoleId"
+            placeholder="请选择"
+            @change="changeRole()"
+          >
+            <el-option
+              v-for="item in roleList"
+              :key="item.id"
+              :label="item.roleName"
+              :value="item.id"
+            >
+            </el-option>
+          </el-select>
+        </p>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="setRole(false)">取 消</el-button>
+        <el-button type="primary" @click="setRole(true)">确 定</el-button>
+      </span>
+    </el-dialog>
+
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/home' }">登陆</el-breadcrumb-item>
@@ -155,6 +190,7 @@
                 size="mini"
                 type="warning"
                 icon="el-icon-setting"
+                @click="showSetRole(scope.row)"
               ></el-button>
             </el-tooltip>
             <el-tooltip
@@ -202,7 +238,9 @@ import {
   search,
   changeUser,
   deleteUser,
+  changeUserRole,
 } from "../../../../network/login.js";
+import { getRoleList } from "network/rights.js";
 // import { debounce } from "../../../../tools/tools.js";
 export default {
   name: "users",
@@ -235,6 +273,7 @@ export default {
       dialogVisible: false,
       addForm: {},
       editVisible: false,
+      setRoleVisible: false,
       addRules: {
         username: [
           { required: true, message: "请输入用户名", trigger: "blur" },
@@ -258,6 +297,9 @@ export default {
       editForm: {},
       deleteId: "",
       deleteVisible: false,
+      userInfo: {},
+      roleList: [],
+      selectedRoleId: "",
     };
   },
   created() {
@@ -274,7 +316,6 @@ export default {
       getUserlist(this.queryInfo).then((res) => {
         if (res.data.meta.status != 200)
           return this.$message.error("获取用户失败！");
-        console.log(res);
         this.list = res.data.data.users;
         this.total = res.data.data.total;
       });
@@ -359,6 +400,35 @@ export default {
         this.getusers();
       });
     },
+    showSetRole(role) {
+      this.setRoleVisible = true;
+      this.userInfo = role;
+      // this.selectedRoleId = role.id;
+      getRoleList().then((res) => {
+        this.roleList = res.data.data;
+      });
+      console.log(role);
+    },
+    setRole(bool) {
+      this.setRoleVisible = false;
+      if (!bool) return;
+      if (!this.selectedRoleId) {
+        return this.$message.error("请选择要分配的角色！");
+      }
+      console.log(this.userInfo.id);
+      changeUserRole(this.userInfo.id, this.selectedRoleId).then((res) => {
+        console.log(res);
+        if (res.data.meta.status != 200)
+          return this.$message.error(res.data.meta.msg);
+        this.$message.success(res.data.meta.msg);
+        this.getusers();
+      });
+    },
+    changeRole() {},
+    resetSelectedId() {
+      this.selectedRoleId = "";
+      console.log(this.selectedRoleId);
+    },
   },
   watch: {
     // "queryInfo.query"(newval) {
@@ -372,8 +442,8 @@ export default {
 .edit {
   z-index: 999999;
 }
-.el-table {
-  margin-top: 20px;
+.roleBox p {
+  line-height: 50px;
 }
 .cell div {
   text-align: center !important;

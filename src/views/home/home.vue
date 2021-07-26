@@ -6,6 +6,7 @@
         <img src="~assets/img/heima.png" alt="" />
         <h2>电商后台管理系统</h2>
       </div>
+      <el-button type="info" @click="logout" class="logout">退出登陆</el-button>
     </el-header>
     <!-- 主体 -->
     <el-container>
@@ -47,7 +48,7 @@
               class="second-list"
               v-for="item of i.children"
               :key="item.id"
-              :index="i.path"
+              :index="item.path"
             >
               <template slot="title">
                 <i class="el-icon-menu"> </i>
@@ -60,7 +61,6 @@
       <!-- 内容 -->
       <el-main>
         <router-view></router-view>
-        <el-button type="info" @click="logout">退出登陆</el-button>
       </el-main>
     </el-container>
   </el-container>
@@ -125,11 +125,17 @@ export default {
   color: white;
   padding-left: 10px;
 }
+.logout {
+  float: right;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .titlebox {
   display: flex;
   align-items: center;
   height: 100%;
-
+  float: left;
   img {
     margin-right: 20px;
     // margin-top: 3px;

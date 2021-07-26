@@ -22,7 +22,6 @@ const routes = [
     redirect:'/home/welcome',
     meta:{title:'首页'},
     children:[
-
       {
         path:'welcome',
         name:'welcome',
@@ -34,6 +33,18 @@ const routes = [
         name:'users',
         meta:{title:'用户列表'},
         component: ()=>import('../views/home/child/users/users.vue'),
+      },
+      {
+        path:'rights',
+        name:'rights',
+        meta:{title:'权限管理'},
+        component: ()=>import('../views/home/child/limits/rights.vue'),
+      },
+      {
+        path:'roles',
+        name:'roles',
+        meta:{title:'角色列表'},
+        component: ()=>import('../views/home/child/limits/roles.vue'),
       }
     ]
   }

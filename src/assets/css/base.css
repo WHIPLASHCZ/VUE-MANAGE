@@ -5,6 +5,7 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  min-width: 1366px;
 }
 
 * {
@@ -14,6 +15,13 @@ body,
   ul{
       list-style: none;
   }
+  .el-table {
+    margin-top: 20px;
+  }
+  .el-tag{
+    margin: 7px;
+  }
+
   @font-face {
     font-family: 'iconfont';
     src: url('../fonts/iconfont.eot');
