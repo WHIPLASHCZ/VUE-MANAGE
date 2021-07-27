@@ -11,7 +11,7 @@ Vue.prototype.$bus= new Vue;
 import {
   Button,Form,FormItem,Input,Icon,Message,Alert,
   Container,Header,Aside,Main,Menu,Submenu,MenuItem,MenuItemGroup,Breadcrumb,BreadcrumbItem,Card,Row,Col,
-  Table,TableColumn,Switch,Tooltip,Pagination,Dialog,Tag,MessageBox,Tree,Select,Option,Cascader
+  Table,TableColumn,Switch,Tooltip,Pagination,Dialog,Tag,MessageBox,Tree,Select,Option,Cascader,Tabs,TabPane
 } from 'element-ui';
 Vue.use(Button);
 Vue.use(Form);
@@ -44,6 +44,8 @@ Vue.use(Tree);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Cascader);
+Vue.use(Tabs);
+Vue.use(TabPane);
 // tree-table组件
 Vue.component('tree-table',TreeTable);
 

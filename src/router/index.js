@@ -51,6 +51,12 @@ const routes = [
         name:'categories',
         meta:{title:'商品分类'},
         component: ()=>import('../views/home/child/goods/categories.vue'),
+      },
+      {
+        path:'params',
+        name:'params',
+        meta:{title:'商品参数'},
+        component: ()=>import('../views/home/child/goods/params.vue'),
       }
     ]
   }

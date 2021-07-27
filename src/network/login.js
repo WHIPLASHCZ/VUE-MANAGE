@@ -1,7 +1,6 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1';
-// axios.defaults.baseURL = 'http://timemeetyou.com:8889/api/private/v1/';
-const baseURL = 'https://www.liulongbin.top:8888/api/private/v1';
+// axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1';
+axios.defaults.baseURL = 'http://timemeetyou.com:8889/api/private/v1/';
 function login(username,password){
     return axios.post('/login',{
             username,
