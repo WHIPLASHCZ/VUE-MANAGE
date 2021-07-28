@@ -1,6 +1,6 @@
 import axios from 'axios';
-// axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1';
-axios.defaults.baseURL = 'http://timemeetyou.com:8889/api/private/v1/';
+axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1';
+// axios.defaults.baseURL = 'http://timemeetyou.com:8889/api/private/v1/';
 
 export function getCategories({type,pagenum,pagesize}){
         return axios.get('/categories',{

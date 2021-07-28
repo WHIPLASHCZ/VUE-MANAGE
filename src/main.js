@@ -13,7 +13,7 @@ import {
   Container,Header,Aside,Main,Menu,Submenu,MenuItem,MenuItemGroup,Breadcrumb,BreadcrumbItem,Card,Row,Col,
   Table,TableColumn,Switch,Tooltip,Pagination,Dialog,Tag,MessageBox,Tree,Select,Option,Cascader,Tabs,TabPane
   ,Step,Steps,CheckboxGroup,Checkbox
-  ,Upload
+  ,Upload,Timeline,TimelineItem
 } from 'element-ui';
 Vue.use(Button);
 Vue.use(Form);
@@ -53,7 +53,8 @@ Vue.use(Steps);
 Vue.use(CheckboxGroup);
 Vue.use(Checkbox);
 Vue.use(Upload);
-
+Vue.use(Timeline);
+Vue.use(TimelineItem);
 // 文本工具
 import VueQuillEditor from 'vue-quill-editor';
 import 'quill/dist/quill.core.css';

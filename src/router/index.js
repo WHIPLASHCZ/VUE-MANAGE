@@ -69,7 +69,19 @@ const routes = [
           name:'add',
           meta:{title:'添加商品'},
           component:()=>import('../views/home/child/goods/addgoods.vue'),
-      }
+      },
+      {
+        path:'orders',
+        name:'orders',
+        meta:{title:'商品列表'},
+        component: ()=>import('../views/home/child/order/orders.vue'),
+      },
+      {
+        path:'reports',
+        name:'reports',
+        meta:{title:'数据报表'},
+        component: ()=>import('../views/home/child/reports/reports.vue'),
+      },
     ]
   }
 ]
