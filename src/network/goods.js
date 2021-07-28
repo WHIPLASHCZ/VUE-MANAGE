@@ -55,4 +55,42 @@ export function deleteParam(id,attr_id){
     return axios.delete(`categories/${id}/attributes/${attr_id}`);
 }
 
+export function getGoods({query,pagenum,pagesize}){
+    return axios.get(`goods`,{
+        params:{
+            query,
+            pagenum,
+            pagesize
+        }
+    })
+}
+
+export function deleteGood(id){
+    return axios.delete(`goods/${id}`);
+}
+
+export function addGood(form){
+    return axios.post('goods',form)
+}
+
+// ### 1.8.3. 根据 ID 查询商品
+
+// - 请求路径：goods/:id
+// - 请求方法：get
+// - 请求参数
+
+// | 参数名 | 参数说明 | 备注                  |
+// | ------ | -------- | --------------------- |
+// | id     | 商品 ID  | 不能为空`携带在url中` |
+
+export function searchGood(id){
+    return axios.get(`goods/${id}`);
+}
+
+export function editGood(id,{goods_name,goods_price,goods_number,goods_weight,goods_introduce,goods_cat}){
+        return axios.put(`goods/${id}`,{
+            goods_name,goods_price,goods_number,goods_weight,goods_introduce,goods_cat
+        })
+}
+
 // export function getCateList

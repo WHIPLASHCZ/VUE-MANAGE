@@ -57,6 +57,18 @@ const routes = [
         name:'params',
         meta:{title:'商品参数'},
         component: ()=>import('../views/home/child/goods/params.vue'),
+      },
+      {
+        path:'goods',
+        name:'goods',
+        meta:{title:'商品列表'},
+        component: ()=>import('../views/home/child/goods/goodslist.vue'),
+      },
+      {
+          path:'goods/add',
+          name:'add',
+          meta:{title:'添加商品'},
+          component:()=>import('../views/home/child/goods/addgoods.vue'),
       }
     ]
   }

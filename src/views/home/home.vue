@@ -48,7 +48,7 @@
               class="second-list"
               v-for="item of i.children"
               :key="item.id"
-              :index="item.path"
+              :index="'/home/' + item.path"
             >
               <template slot="title">
                 <i class="el-icon-menu"> </i>
@@ -78,7 +78,6 @@ export default {
     });
     this.currentState = sessionStorage.getItem("activeIndex");
     this.$bus.$on("jump", () => {
-      console.log("页面跳转");
       this.currentState = sessionStorage.getItem("activeIndex");
     });
   },

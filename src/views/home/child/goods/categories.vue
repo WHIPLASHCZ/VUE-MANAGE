@@ -51,7 +51,7 @@
       <el-row>
         <el-col>
           <el-button type="primary" @click="getParentCateList"
-            >添加商品</el-button
+            >添加分类</el-button
           >
         </el-col>
       </el-row>

@@ -286,6 +286,7 @@ export default {
     // },
   },
   methods: {
+    handleTabClick() {},
     //   获取分类信息
     getCate() {
       getCategories({}).then((res) => {

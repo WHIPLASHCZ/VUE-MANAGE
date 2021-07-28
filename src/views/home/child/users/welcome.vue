@@ -1,6 +1,6 @@
 <template>
   <div>
-    welcome组件儿！
+    welcome!
   </div>
 </template>
 

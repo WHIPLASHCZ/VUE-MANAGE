@@ -12,6 +12,8 @@ import {
   Button,Form,FormItem,Input,Icon,Message,Alert,
   Container,Header,Aside,Main,Menu,Submenu,MenuItem,MenuItemGroup,Breadcrumb,BreadcrumbItem,Card,Row,Col,
   Table,TableColumn,Switch,Tooltip,Pagination,Dialog,Tag,MessageBox,Tree,Select,Option,Cascader,Tabs,TabPane
+  ,Step,Steps,CheckboxGroup,Checkbox
+  ,Upload
 } from 'element-ui';
 Vue.use(Button);
 Vue.use(Form);
@@ -46,9 +48,32 @@ Vue.use(Option);
 Vue.use(Cascader);
 Vue.use(Tabs);
 Vue.use(TabPane);
+Vue.use(Step);
+Vue.use(Steps);
+Vue.use(CheckboxGroup);
+Vue.use(Checkbox);
+Vue.use(Upload);
+
+// 文本工具
+import VueQuillEditor from 'vue-quill-editor';
+import 'quill/dist/quill.core.css';
+import 'quill/dist/quill.snow.css';
+import 'quill/dist/quill.bubble.css';
+Vue.use(VueQuillEditor);
+
 // tree-table组件
 Vue.component('tree-table',TreeTable);
-
+Vue.filter('dateFormat',(oldval,newval)=>{
+  const dt = new Date(oldval);
+  let y = dt.getFullYear();
+  let m = (dt.getMonth()+1+'').padStart(2,'0');
+  let d = (dt.getDate()+'').padStart(2,'0');
+  let hh = (dt.getHours()+'').padStart(2,'0');
+  let mm = (dt.getMinutes()+'').padStart(2,'0');
+  let ss = (dt.getSeconds()+'').padStart(2,'0');
+  // console.log(`${y}-${m}-${d} ${hh}:${mm}:${ss}`);
+  return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+})
 Vue.prototype.$alert = Alert;
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox;
