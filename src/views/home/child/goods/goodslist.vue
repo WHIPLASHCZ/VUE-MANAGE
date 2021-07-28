@@ -11,7 +11,7 @@
     <el-dialog
       :title="'修改商品'"
       :visible.sync="showGoodEdit"
-      width="30%"
+      width="500px"
       @close="resetGoodEditForm"
     >
       <el-form
@@ -40,27 +40,15 @@
           ></el-input>
         </el-form-item>
         <el-form-item label="商品介绍" prop="goods_introduce">
-          <!-- <el-input v-html="editGoodForm.goods_introduce"> </el-input> -->
           <!-- <el-input
-            v-model="editGoodForm.goods_introduce"
-            class="intro"
-          ></el-input> -->
-          <!-- <el-button type="primary" @click="editIntro"> 修改介绍 </el-button> -->
-          <!-- <el-input
-            placeholder="请输入内容"
-            v-html="editGoodForm.goods_introduce"
-            v-if="showIntroHtml"
-            ref="textarea"
-          >
-          </el-input> -->
-          <el-input
             type="textarea"
             :rows="10"
             placeholder="请输入内容"
             v-model="editGoodForm.goods_introduce"
             ref="textarea"
           >
-          </el-input>
+          </el-input> -->
+          <quill-editor v-model="editGoodForm.goods_introduce"></quill-editor>
         </el-form-item>
       </el-form>
 
