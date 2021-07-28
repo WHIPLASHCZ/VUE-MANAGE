@@ -33,7 +33,7 @@
           <!-- 一级菜单 -->
           <el-submenu
             v-for="(i, index) of asideList"
-            :index="i.path"
+            :index="'/home/' + i.path"
             :key="i.id"
             class="submenu"
             :popper-append-to-body="true"
@@ -48,7 +48,7 @@
               class="second-list"
               v-for="item of i.children"
               :key="item.id"
-              :index="'/home/' + item.path"
+              :index="item.path"
             >
               <template slot="title">
                 <i class="el-icon-menu"> </i>
@@ -75,6 +75,13 @@ export default {
       if (res.data.meta.status !== 200)
         return this.$message.error(res.meta.msg);
       this.asideList = res.data.data;
+      // res.data.data.forEach((item) => {
+      //   item.children.forEach((item) => {
+      //     item.path = `/home/` + item.path;
+      //   });
+      // });
+      this.asideList = res.data.data;
+      console.log(this.asideList);
     });
     this.currentState = sessionStorage.getItem("activeIndex");
     this.$bus.$on("jump", () => {

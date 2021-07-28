@@ -237,7 +237,7 @@ export default {
       });
     },
     addGood() {
-      this.$router.push("/home/goods/add");
+      this.$router.push("/home/add");
     },
     showEdigDialog(good) {
       this.showGoodEdit = true;

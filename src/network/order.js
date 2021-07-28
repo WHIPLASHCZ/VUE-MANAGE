@@ -13,3 +13,7 @@ export function getOrders({query,pagenum,pagesize}){
 export function editAddr(id){
     return axios.get(`kuaidi/${id}`);
 }
+
+export function getLine(){
+    return axios.get('reports/type/1');
+}
